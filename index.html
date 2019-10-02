@@ -4,7 +4,7 @@
 
 
 
-<html lang="zh-C">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -47,9 +47,9 @@
     path: '',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
-      copy_button: 'Kopieren',
-      copy_success: 'Kopiert',
-      copy_failure: 'Kopieren fehlgeschlagen'
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
     },
     sidebarPadding: 40
   };
@@ -61,7 +61,7 @@
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="GetStorm">
 <meta property="og:description" content="Hello, Getstorm!">
-<meta property="og:locale" content="zh-C">
+<meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GetStorm">
 <meta name="twitter:description" content="Hello, Getstorm!">
@@ -115,7 +115,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-C">
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
   <div class="container use-motion">
     <div class="headband"></div>
 
@@ -133,7 +133,7 @@
   </div>
 
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Navigationsleiste an/ausschalten">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -238,13 +238,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
 
               
                 
               
 
-              <time title="Erstellt: 2019-10-02 18:16:29 / Geändert am: 18:21:16" itemprop="dateCreated datePublished" datetime="2019-10-02T18:16:29+08:00">2019-10-02</time>
+              <time title="Created: 2019-10-02 18:16:29 / Modified: 18:35:33" itemprop="dateCreated datePublished" datetime="2019-10-02T18:16:29+08:00">2019-10-02</time>
             </span>
           
             
@@ -255,7 +255,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux入门/" itemprop="url" rel="index"><span itemprop="name">Linux入门</span></a></span>
 
@@ -276,545 +276,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="《Linux命令入门》"><a href="#《Linux命令入门》" class="headerlink" title="《Linux命令入门》"></a>《Linux命令入门》</h1><p>本章的结构：</p>
-<ul>
-<li>强大好用的Shell</li>
-<li>执行帮助文档命令</li>
-<li>常用系统工作命令</li>
-<li>系统状态检测命令</li>
-<li>工作目录切换命令</li>
-<li>文本文件编辑命令</li>
-<li>文件目录管理命令</li>
-<li>打包压缩与搜索命令</li>
-</ul>
-<p>这章实际挑选了数十个Linux命令，分别涉及上述几个方面，逐个学习这些最基础的Linux命令，为今后学习更复杂的命令和服务做好必备知识铺垫。</p>
-<h2 id="1-强大好用的Shell"><a href="#1-强大好用的Shell" class="headerlink" title="1. 强大好用的Shell"></a>1. 强大好用的Shell</h2><p>通常来讲，计算机硬件是由运算器、控制器、存储其和输入输出设备共同组成，而让各种硬件设备各司其职又能协同运行的东西就是系统内核。</p>
-<p>Linux系统的内核负责完成对硬件资源的分配、调度等管理任务。但不建议普通用户直接编辑内核中的参数，而是让用户通过基于系统调用接口开发出的程序或服务来管理计算机，以满足日常工作的需要。【这个层面上，可视化操作界面就是用户和计算机的操作系统层级。】</p>
-<p>但，图形化工具其实是调用了脚本来完成相应的工作，往往只是为了完成某种工作而设计，缺乏Linux命令原有的灵活性及可控性。再者，图形化工具相较于Linux命令行界面会更加消耗系统资源，因此经验丰富的运维仁和园甚至都不装Linux系统安装图形界面。</p>
-<p>Shell就是这样的一个命令行工具。Shell也称为终端或壳，充当人与内核（硬件）之间的翻译官。用户把一些命令告诉Shell，它就会调用响应的程序服务去完成某些工作。</p>
-<p>现在主流Linux系统默认使用的终端是Bash（Bourne-Again Shell）解释器。</p>
-<p><code>Bash解释器</code>具有4项优势：</p>
-<ol>
-<li>通过上下方向键来调取过往执行过的Linux命令；</li>
-<li>命令或参数仅需输入前几位就可以使用Tab键补全；</li>
-<li>具有强大的批处理脚本；</li>
-<li>具有使用的环境变量功能。</li>
-</ol>
-<h3 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h3><p>Linux命令的格式如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令名称 [命令参数] [命令对象]</span><br></pre></td></tr></table></figure>
-
-<p>注意：命令名称，命令参数和命令对象之间使用空格键分隔。命令对象一般是指要处理的文件、目录、用户等资源。而命令参数有长格式和短格式之分。</p>
-<p>Linux新手不会执行命令大多数是因为命令参数比较复杂，参数值需要随不同的命令和需求情况而发生变化，实际上，要想灵活搭配各种参数，执行自己想要的功能，是需要长时间经验积累的。【这个也是新手永远不可能短时间成为大神，编程语言也是如此。】</p>
-<p>命令参数的长格式与短格式示例：</p>
-<table>
-<thead>
-<tr>
-<th>长格式</th>
-<th>man –help</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>短格式</td>
-<td>man -h</td>
-</tr>
-</tbody></table>
-<h2 id="2-执行查看帮助命令"><a href="#2-执行查看帮助命令" class="headerlink" title="2. 执行查看帮助命令"></a>2. 执行查看帮助命令</h2><p>新人往往会问一个问题：Linux系统中有非常多的命令，我们怎么知道某个命令是干嘛用的？以及碰到了不熟悉的Linux命令，怎么才能知道有哪些可用参数？</p>
-<h3 id="man命令"><a href="#man命令" class="headerlink" title="man命令"></a>man命令</h3><p><code>man</code>这个命令就是查看帮助命令。零基础的读者，这个应该是最先了解学习的。</p>
-<ul>
-<li>man命令中常用按键以及用途：</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>按键</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>空格键</td>
-<td>向下翻一页</td>
-</tr>
-<tr>
-<td>PaGe down</td>
-<td>向下翻一页</td>
-</tr>
-<tr>
-<td>page up</td>
-<td>向上翻一页</td>
-</tr>
-<tr>
-<td>home</td>
-<td>前往首页</td>
-</tr>
-<tr>
-<td>end</td>
-<td>前往尾页</td>
-</tr>
-<tr>
-<td>/</td>
-<td>从上到下搜索某个关键词，如“/linux”</td>
-</tr>
-<tr>
-<td>?</td>
-<td>从下到上搜索某个关键词，如“?linux”</td>
-</tr>
-<tr>
-<td>n</td>
-<td>定位到下一个搜索到的关键词</td>
-</tr>
-<tr>
-<td>m</td>
-<td>定位到上一个搜索到的关键词</td>
-</tr>
-<tr>
-<td>q</td>
-<td>退出帮助文档</td>
-</tr>
-</tbody></table>
-<ul>
-<li>man命令帮助信息的结构和意义:</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>结构名称</th>
-<th>代表意义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>NAME</td>
-<td>命令的名称</td>
-</tr>
-<tr>
-<td>SYNOPSIS</td>
-<td>参数的大致使用方法</td>
-</tr>
-<tr>
-<td>DESCRIPTION</td>
-<td>介绍说明</td>
-</tr>
-<tr>
-<td>EXAMPLE</td>
-<td>演示（附带说明）</td>
-</tr>
-<tr>
-<td>OVERVIEW</td>
-<td>概述</td>
-</tr>
-<tr>
-<td>DEFAULTS</td>
-<td>默认的功能</td>
-</tr>
-<tr>
-<td>OPTIONS</td>
-<td>具体的可用选项（带介绍）</td>
-</tr>
-<tr>
-<td>ENVIRONMENT</td>
-<td>环境变量</td>
-</tr>
-<tr>
-<td>FILES</td>
-<td>用到的文件</td>
-</tr>
-<tr>
-<td>SEE ALSO</td>
-<td>相关的资料</td>
-</tr>
-<tr>
-<td>HISTORY</td>
-<td>维护历史与联系方式</td>
-</tr>
-</tbody></table>
-<h2 id="3-常用系统工作命令"><a href="#3-常用系统工作命令" class="headerlink" title="3. 常用系统工作命令"></a>3. 常用系统工作命令</h2><h3 id="echo命令"><a href="#echo命令" class="headerlink" title="echo命令"></a>echo命令</h3><p>eho命令用于在终端输出字符串或变量提取后的值，格式为<code>echo[字符串|$变量]</code></p>
-<p>【这个类似于pyhton中的print（）】</p>
-<h3 id="date命令"><a href="#date命令" class="headerlink" title="date命令"></a>date命令</h3><p>date命令用于显示及设置系统的时间或日期，格式为<code>date[选项][+指定的格式]</code></p>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>%t</td>
-<td>跳格[Tab键]</td>
-</tr>
-<tr>
-<td>%H</td>
-<td>小时（00~23）</td>
-</tr>
-<tr>
-<td>%I</td>
-<td>小时（00~12）</td>
-</tr>
-<tr>
-<td>%M</td>
-<td>分钟</td>
-</tr>
-<tr>
-<td>%S</td>
-<td>秒</td>
-</tr>
-<tr>
-<td>%j</td>
-<td>今年中的第几天</td>
-</tr>
-</tbody></table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># date</span><br><span class="line"># date &quot;+%Y-%m-%d %H:%M:%S&quot;</span><br><span class="line"># date &quot;+%j&quot;</span><br></pre></td></tr></table></figure>
-
-<h3 id="reboot命令"><a href="#reboot命令" class="headerlink" title="reboot命令"></a>reboot命令</h3><p>reboot命令用于重启系统，其格式为reboot。</p>
-<p>由于重启系统设计硬件资源的管理权限，因此默认只能使用root管理员来重启。</p>
-<h3 id="poweroff命令"><a href="#poweroff命令" class="headerlink" title="poweroff命令"></a>poweroff命令</h3><p>关闭系统，和reboot命令一样，需在管理员权限下。</p>
-<h3 id="wget命令"><a href="#wget命令" class="headerlink" title="wget命令"></a>wget命令</h3><p>wget命令用于在终端中下载网络文件，格式为<code>wget[参数]下载地址</code></p>
-<p>等后面讲解Linux系统的配置管理方法，掌握了网卡的配置方法后，在实验操作。</p>
-<h3 id="ps命令"><a href="#ps命令" class="headerlink" title="ps命令"></a>ps命令</h3><p>ps命令用于查看系统中的进程状态，格式为<code>ps[参数]</code></p>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>-a</td>
-<td>显示所有进程（包括其他用户的进程）</td>
-</tr>
-<tr>
-<td>-u</td>
-<td>用户以及其他详细信息</td>
-</tr>
-<tr>
-<td>-x</td>
-<td>显示没有控制终端的进程</td>
-</tr>
-</tbody></table>
-<p>Linux系统中时刻运行着许多进程，如果能够合理地管理他们，则可以优化系统的性能。</p>
-<p>在Linux系统中，有5种常见的进程状态，分别为运行、中断、不可中断、僵死与停止。</p>
-<ul>
-<li>R（运行）：进程正在运行或运行队列中等待。</li>
-<li>S（中断）：进程处于休眠中，当某个条件形成后或者接收到信号时，则脱离该状态。</li>
-<li>D（不可中断）：进程不响应系统异步信号，即便用kill命令也不能将其中断。</li>
-<li>Z（僵死）：进程已经终止，但进程描述符依然存在，知道父进程调用wait4（）系统函数后将进程释放。</li>
-<li>T（停止）：进程收到停止信号后停止运行。</li>
-</ul>
-<p>当执行ps aux命令后通常会看到一系列的进程状态。【注意，Linux系统中的命令参数有长短格式之分，长格式和长格式之间不能合并，长格式和短格式之间也不能合并，但短格式和短格式之间可以合并，比如 ps -RS，同时ps命令允许参数不加减号。所以才有ps aux的样子。</p>
-<h3 id="top命令"><a href="#top命令" class="headerlink" title="top命令"></a>top命令</h3><p>top命令用于动态地简史进程活动与系统负载等信息，其格式为top。</p>
-<p>top命令相当强大，能够动态地查看系统运维状态，完全将它看做linux的“强化版的Windows任务管理器”</p>
-<h3 id="pidof命令"><a href="#pidof命令" class="headerlink" title="pidof命令"></a>pidof命令</h3><p>pidof命令用于查询某个指定服务进程的PID值，格式为<code>pidof[参数][服务名称]</code></p>
-<p>每个进程的进程号码值（PID）是唯一的，因此可以通过PID来区分不同的进程。例如，查询本机上sshd服务程序的PID：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pidof sshd</span><br><span class="line">2156</span><br></pre></td></tr></table></figure>
-
-<h3 id="kill命令"><a href="#kill命令" class="headerlink" title="kill命令"></a>kill命令</h3><p>kill命令用于终止某个指定PID的服务进程，格式为<code>kill[参数][进程PID]</code></p>
-<h3 id="killall命令"><a href="#killall命令" class="headerlink" title="killall命令"></a>killall命令</h3><p>killall命令用于终止某个指定名称的服务所对应的全部进程，格式为<code>killall[参数][进程名称]</code></p>
-<p>通常，复杂软件的服务程序有多个进程协同为用户提供服务，如果逐个去结束这些进程会比较麻烦，此时可以使用killall命令来批量结束某个服务程序带有的全部进程。</p>
-<p>如果我们在系统终端执行一个命令后想立即停止它，可以同时按下Ctrl+C组合键（生产环境中比较常见的快捷键），如果在命令的末尾加上一个&amp;符号，这样命令将进入系统后台来执行。</p>
-<h2 id="4-系统状态检测命令"><a href="#4-系统状态检测命令" class="headerlink" title="4. 系统状态检测命令"></a>4. 系统状态检测命令</h2><p>作为一名合格的运维人员，想要更快、更好地了解Linux系统运行状态的能力。</p>
-<h3 id="ifconfig命令"><a href="#ifconfig命令" class="headerlink" title="ifconfig命令"></a>ifconfig命令</h3><p>ifconfig命令用于获取网卡配置与网络状态等信息，格式为<code>ifconfig[网络设备][参数]</code></p>
-<h3 id="uname命令"><a href="#uname命令" class="headerlink" title="uname命令"></a>uname命令</h3><p>uname命令用于查看系统内核与系统版本等信息，格式为<code>uname[-a]</code></p>
-<p>如果要查看当前系统版本的详细信息，则需要查看redhat-release文件，其命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@linuxprobe~]# cat /etc/redhat-release</span><br></pre></td></tr></table></figure>
-
-<h3 id="uptime命令"><a href="#uptime命令" class="headerlink" title="uptime命令"></a>uptime命令</h3><p>uptime用来查看系统的负载信息，格式为<code>uptime</code></p>
-<h3 id="free命令"><a href="#free命令" class="headerlink" title="free命令"></a>free命令</h3><p>free用于显示当前系统中内存使用量信息，格式为<code>free[-h]</code></p>
-<h3 id="who命令"><a href="#who命令" class="headerlink" title="who命令"></a>who命令</h3><p>who用于查看当前登入主机的用户终端信息，格式为<code>who[参数]</code></p>
-<h3 id="last命令"><a href="#last命令" class="headerlink" title="last命令"></a>last命令</h3><p>last命令用于查看所有系统的登录记录，格式为<code>last[参数]</code></p>
-<p>使用last命令可以查看本机的登录记录。但是，由于这些信息都是以日志文件的形式保存在系统中，因此黑客可以很容易对内容进行篡改。不要单纯以该命令的输出信息判断系统有无被入侵。</p>
-<h3 id="history命令"><a href="#history命令" class="headerlink" title="history命令"></a>history命令</h3><p>history命令用于显示历史执行过的命令，格式为<code>history[-c]</code></p>
-<p>history是作者最喜欢的命令，执行history命令能显示出当前用户在本地计算机中执行过的最近1000条命令记录。</p>
-<p>如果使用-c参数，则会清空所有的命令历史记录。还可以使用！编码数字的方式重复执行某一次指令。</p>
-<p>历史命令会被保存到用户家目录中的. bash_history文件中。Linux系统中以（.）开头的文件均代表隐藏文件，可以用cat命令查看其文件内容。</p>
-<h3 id="sosreport命令"><a href="#sosreport命令" class="headerlink" title="sosreport命令"></a>sosreport命令</h3><p>sosreport命令用于手机系统配置及架构信息并输出诊断文档，格式为sosreport。</p>
-<h2 id="5-工作目录切换命令"><a href="#5-工作目录切换命令" class="headerlink" title="5. 工作目录切换命令"></a>5. 工作目录切换命令</h2><h3 id="pwd命令"><a href="#pwd命令" class="headerlink" title="pwd命令"></a>pwd命令</h3><p>显示当前工作目录。【和git看来操作一样】</p>
-<h3 id="cd命令"><a href="#cd命令" class="headerlink" title="cd命令"></a>cd命令</h3><p>又是个shell都具备的命令。常用格式为<code>cd[目录名称]</code></p>
-<p>cd- 返回到上一次所处的目录</p>
-<p>cd..进入上级目录</p>
-<p>dc<del>命令切换到当前用户的家目录，或使用cd</del>username切换到其他用户的家目录。</p>
-<h3 id="ls命令"><a href="#ls命令" class="headerlink" title="ls命令"></a>ls命令</h3><p>ls命令用于显示目录中的文件信息，格式为<code>ls[选项][文件]</code></p>
-<p>【git本来就是用c语言写的来源于linux，所以也相同】</p>
-<p>ls -a参数看到全部文件包括隐藏文件</p>
-<p>ls -l参数可以查看文件的属性，大小写详细信息</p>
-<p>ls -al 整合上面的两个参数，可查看当前目录中的所有文件并输出这些文件的属性信息</p>
-<p>-d参数，可以查看目录属性信息</p>
-<h2 id="6-文本文件编辑命令"><a href="#6-文本文件编辑命令" class="headerlink" title="6. 文本文件编辑命令"></a>6. 文本文件编辑命令</h2><p>Linux系统中“一切都是文件”，而对服务程序进行配置，就是编辑程序的配置文件。如果不能熟练地查阅系统或服务的配置文件，那以后工作时就真的要尴尬了。本节介绍几条用于查看文本文件内容的命令。</p>
-<h3 id="cat命令"><a href="#cat命令" class="headerlink" title="cat命令"></a>cat命令</h3><p>cat命令用于查看纯文本内容的命令，每个命令都有自己的特点，比如这个cat是用来查看内容较少的纯文本文件的。</p>
-<p>Linux系统中有多个用于查看文本内容的额命令，每个命令都有自己的特点，比如这个cat命令就是用于查看内容较少的纯文本文件的。</p>
-<h3 id="more命令"><a href="#more命令" class="headerlink" title="more命令"></a>more命令</h3><p>more命令用于查看纯文本文件（内容较多的），格式为<code>more[选项]文件</code></p>
-<h3 id="head命令"><a href="#head命令" class="headerlink" title="head命令"></a>head命令</h3><p>head命令用于查看纯文本文件的前N行，格式为<code>head[选项][files]</code></p>
-<p>例如：查看前20行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">head -n 20 initial-setup-ks.cfg</span><br></pre></td></tr></table></figure>
-
-<h3 id="tail命令"><a href="#tail命令" class="headerlink" title="tail命令"></a>tail命令</h3><p>和head命令正好相反，用于查看纯文本文档的后N行或持续刷新内容。</p>
-<p>查看文本文档后N行和使用head相同。但tail最强悍的功能是可以持续刷新一个文件的内容，当想要实时查看最新日志文件时，这特别有用，此时命令格式为<code>tail -f文件名</code></p>
-<h3 id="tr命令"><a href="#tr命令" class="headerlink" title="tr命令"></a>tr命令</h3><p>【我猜测，是转换transform的简写】。tr命令用于替换文本文件中的字符，格式为<code>tr[原始字符][目标字符]</code></p>
-<p>在很多时候，我们想要快速地替换文本中的一些词汇，又后者把整个个文本内容都进行替换，如果手工替换，工作量巨大，尤其是需要处理批量内容时，进行手工替换更是不现实。</p>
-<p>这是，可以先使用cat命令读取待处理的文本，然后通过管道符把这些文本内容传递给tr命令进行替换操作即可。</p>
-<p>例如，把某个文本内容中的英文全部替换为大写：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat anaconda-ks.cfg | tr[a-z][A-Z]</span><br></pre></td></tr></table></figure>
-
-<h3 id="wc命令"><a href="#wc命令" class="headerlink" title="wc命令"></a>wc命令</h3><p>wc命令用于统计指定文本的行数、字数、字节数，格式为<code>wc[参数]文本</code></p>
-<p>参数有：</p>
-<ul>
-<li>-l 只显示行数</li>
-<li>-w 只显示单词书</li>
-<li>-c 只显示字节数</li>
-</ul>
-<p>在Linux系统中，passwd是用于保存系统账户信息的文件，要统计当前系统中有多少个用户，可以使用下面的命令来进行查询。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wc -l /etc/passwd</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li><p>stat 命令</p>
-<p>stat 命令用于查看文件的具体存储信息和时间等信息，格式为<code>stat文件名称</code></p>
-</li>
-<li><p>cut命令</p>
-<p>cut命令用于按“列”提取文本字符，格式为<code>cut[参数]文本</code></p>
-</li>
-<li><p>diff命令</p>
-<p>diff命令用于比较多个文本文件的差异，格式为<code>diff[参数]文件</code></p>
-</li>
-</ol>
-<h2 id="7-文件目录管理命令"><a href="#7-文件目录管理命令" class="headerlink" title="7. 文件目录管理命令"></a>7. 文件目录管理命令</h2><p>在Linux系统的日常运维工作中，还需要掌握对文件的创建、修改、赋值、剪切、更名与删除等操作。</p>
-<h3 id="touch命令"><a href="#touch命令" class="headerlink" title="touch命令"></a>touch命令</h3><p>touch命令用于创建空白文件或设置文件的时间，格式为<code>touch[选项][文件]</code></p>
-<h3 id="mkdir命令"><a href="#mkdir命令" class="headerlink" title="mkdir命令"></a>mkdir命令</h3><p>mkdir命令用于创建空白的目录，格式为<code>mkdir[选项]目录</code>。</p>
-<p>mkdir命令还可以结合-p参数来递归创建出具有嵌套层叠关系的文件目录。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#mkdir linuxprobe</span><br><span class="line">#cd linuxprobe</span><br><span class="line">#mkdir -p a/b/c/d/e</span><br><span class="line">#cd a</span><br></pre></td></tr></table></figure>
-
-<h3 id="cp命令"><a href="#cp命令" class="headerlink" title="cp命令"></a>cp命令</h3><p>cp命令用于复制文件或目录。格式为<code>cp[选项] 源文件 目标文件</code>.大家对文件的赋值操作不陌生，在linux系统中，复制操作具体分为3种情况：</p>
-<blockquote>
-<p>如果目标文件是目录，则会把源文件复制到该目录中；</p>
-<p>如果目标文件也是普通文件，则会询问是否要覆盖它；</p>
-<p>如果目标文件不存在，则执行正常的复制操作。</p>
-</blockquote>
-<p>接下来举例子，使用touch创建一个名为install.log的普通空白文件，然后将其复制一份名为x.log的备份文件，最后在使用ls命令查看目录中的文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># touch install.log</span><br><span class="line"># cp install.log x.log</span><br><span class="line"># ls</span><br></pre></td></tr></table></figure>
-
-<h3 id="mv命令"><a href="#mv命令" class="headerlink" title="mv命令"></a>mv命令</h3><p>mv命令用于剪切文件或将文件重命名，格式为<code>mv[选项] 源文件 [目标路径 | 目标文件名]</code>.</p>
-<p>剪切操作不同于赋值操作，因为它会默认把源文件删除掉，只保留剪切后的文件。如果在同一个目录中对一个文件进行剪切操作，其实也就是对其进行重命名。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># mv x.log linux.log</span><br><span class="line"># ls</span><br><span class="line">linnux.log</span><br></pre></td></tr></table></figure>
-
-<h3 id="rm命令"><a href="#rm命令" class="headerlink" title="rm命令"></a>rm命令</h3><p>rm命令用于删除文件或目录，格式为<code>rm[选项]文件</code></p>
-<p>在Linux系统中删除文件时，系统会默认向您询问是否要执行删除操作，如果不想总是看到这种反复的确认信息，可在rm命令后跟上-f参数来强制删除。</p>
-<p>想要删除一个目录，需要在rm命令后面加一个-r参数才可以，否则删除不掉。</p>
-<h3 id="dd命令"><a href="#dd命令" class="headerlink" title="dd命令"></a>dd命令</h3><p>dd命令用于按照指定大小和个数的数据块来复制文件或转换文件，格式为<code>dd[参数]</code>。</p>
-<p>dd命令是一个比较重要且有特色的命令，它能够让用户按照指定大小和个数的数据块来复制文件的内容。当然如果愿意，还可以在复制过程中转换其中的数据。Linux系统中有一个名为/dev/zero的设备文件。这个文件特色在于不会占用系统存储空间，但却可以提供无穷无尽的数据，因此可以使用它作为dd命令的输入文件，来生成一个指定大小的文件。</p>
-<p>dd命令的参数及其作用：</p>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>if</td>
-<td>输入的文件名称</td>
-</tr>
-<tr>
-<td>of</td>
-<td>输出的文件名称</td>
-</tr>
-<tr>
-<td>bs</td>
-<td>设置每个“块”的大小</td>
-</tr>
-<tr>
-<td>count</td>
-<td>设置要复制“块”的个数</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>例如我们可以用dd命令从/dev/zero设备文件中取出一个带下为560mb的数据块，然后保存成明为560_file的文件。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># dd if=/dev/zero of=560_file count=1 bs=560m</span><br></pre></td></tr></table></figure>
-
-<p>dd命令的功能也绝不仅限于复制文件这么简单。如果你想把光驱设备中的光盘制作成iso格式的镜像文件，在window需借助第三方软件，但在linux中可以直接使用dd命令，将它变成一个可立即使用的iso镜像。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># dd if=/dev/cdrom of=RHEL-server-7.0-x86_64-LinuxProbe.Com.iso</span><br></pre></td></tr></table></figure>
-
-<p>bs与count都是用来指定容量的大小，只要能满足需求，可随意组合搭配方式。</p>
-<h3 id="file命令"><a href="#file命令" class="headerlink" title="file命令"></a>file命令</h3><p>file命令用于查看文件的类型，格式为<code>file文件名</code></p>
-<p>在Linux系统中，由于文本、目录、设备等所有这些一切都统称为文件，而我们又不能单凭后缀就知道具体的文件类型，这时就需要使用file命令来查看文件类型了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># file anaconda-ks.cfg</span><br><span class="line">anaconda-ks.cfg: ASCII text</span><br><span class="line"># file /dev/sda</span><br><span class="line">/dev/sda: block special</span><br></pre></td></tr></table></figure>
-
-<h2 id="8-打包压缩与搜索命令"><a href="#8-打包压缩与搜索命令" class="headerlink" title="8. 打包压缩与搜索命令"></a>8. 打包压缩与搜索命令</h2><p>本节学习如何在Linux系统中对文件进行打包压缩与解压，以及然该用户基于关键词在文本文件中搜索相匹配的信息、在整个文件系统中基于指定的名称或属性搜索特定文件。</p>
-<h3 id="tar命令"><a href="#tar命令" class="headerlink" title="tar命令"></a>tar命令</h3><p>tar命令用于对文件进行打包压缩或解压，格式为<code>tar[选项][文件]</code></p>
-<p>在Linux系统中，常见的文件格式比较多，其中主要使用的是 .tar或 .tar.gz 或 .tar.bz2格式，我们不用担心格式太多记不住，其实这些格式大部分都是由tar命令来生成的。</p>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>-c</td>
-<td>创建压缩文件</td>
-</tr>
-<tr>
-<td>-x</td>
-<td>解开压缩文件</td>
-</tr>
-<tr>
-<td>-t</td>
-<td>查看压缩包内有哪些文件</td>
-</tr>
-<tr>
-<td>-z</td>
-<td>使用Gzip压缩或解压</td>
-</tr>
-<tr>
-<td>-j</td>
-<td>用bzip2压缩或解压</td>
-</tr>
-<tr>
-<td>-v</td>
-<td>显示压缩或解压的过程</td>
-</tr>
-<tr>
-<td>-f</td>
-<td>目标文件名</td>
-</tr>
-<tr>
-<td>-P</td>
-<td>保留原始的权限与属性</td>
-</tr>
-<tr>
-<td>-p</td>
-<td>使用绝对路径来压缩</td>
-</tr>
-<tr>
-<td>-C</td>
-<td>指定解压到目录</td>
-</tr>
-</tbody></table>
-<p>-c和-x一个为压缩，一个为解压，所以自然不能联用。</p>
-<p>一般使用<code>tar -czvf  压缩包名称.tar.gz 要打包的目录</code></p>
-<p>一般使用<code>tar -xzvf  压缩包名称.tar.gz</code></p>
-<p>下面来逐个演示打包压缩与解压的操作。先使用tar命令把/etc目录通过gzip格式进行打包压缩，并把文件命名为etc.tar.gz：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># tar czvf etc.tar.gz /etc</span><br></pre></td></tr></table></figure>
-
-<p>接下来将打包后的压缩文件制定解压到/root/etc目录中（先使用mkdir命令创建/root/etc目录）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># mkdir /root/etc</span><br><span class="line"># tar xzvf etc.tar.gz -C /root/etc</span><br></pre></td></tr></table></figure>
-
-<h3 id="grep命令"><a href="#grep命令" class="headerlink" title="grep命令"></a>grep命令</h3><p>grep命令用于在文本中执行关键词搜索，并显示匹配的结果，格式为<code>grep[选项][文件]</code></p>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>-b</td>
-<td>将可执行文件（binary）当做文本文件（text）来搜索</td>
-</tr>
-<tr>
-<td>-c</td>
-<td>进显示找到的行数</td>
-</tr>
-<tr>
-<td>-i</td>
-<td>忽略大小写</td>
-</tr>
-<tr>
-<td>-n</td>
-<td>显示行号</td>
-</tr>
-<tr>
-<td>-v</td>
-<td>反向选择——仅列出没有“关键词”的行</td>
-</tr>
-</tbody></table>
-<p>grep命令是用途最广泛的文本搜索匹配工具，虽然有很多参数，但只有两个参数-n，-v最为常用。其他的在工作期间遇到了，使用man grep命令查询也来得及。</p>
-<p>在linux系统中，/etc/passwd文件时保存着所有的用户信息，而一旦用户的登录中断被设置成/sbin/nologin,则不再允许登录系统，因此可以使用grep命令来查找出当前系统中不允许登录系统的所有用户信息：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># grep /sbin/nologin /etc/passwd</span><br></pre></td></tr></table></figure>
-
-<h3 id="find命令"><a href="#find命令" class="headerlink" title="find命令"></a>find命令</h3><p>find命令用于按照指定条件来查找文件，格式为<code>find[查找路径] 寻找条件 操作</code></p>
-<p>在Linux系统中的一切都是文件，接下来就要见证这句话了。在Linux系统中，搜索工作一般都是通过find命令来完成的，它可以使用不同的文件特性作为寻找条件（如文件名，大小，修改时间，权限等信息），一旦匹配成功则默认将信息显示到屏幕上。find命令的参数及作用如下：</p>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>-name</td>
-<td>匹配名称</td>
-</tr>
-<tr>
-<td>-perm</td>
-<td>匹配权限（mode为完全匹配， -mode为包含匹配）</td>
-</tr>
-<tr>
-<td>-user</td>
-<td>匹配所有者</td>
-</tr>
-<tr>
-<td>-group</td>
-<td>匹配所有组</td>
-</tr>
-<tr>
-<td>-mtime -n +n</td>
-<td>匹配修改内容的时间（-n指n天以内， +n指n天以前）</td>
-</tr>
-<tr>
-<td>-atime -n +n</td>
-<td>匹配访问文件的时间（如上）</td>
-</tr>
-<tr>
-<td>-ctime -n +n</td>
-<td>匹配修改文件权限的时间（如上）</td>
-</tr>
-<tr>
-<td>-nouser</td>
-<td>匹配无所有者的文件</td>
-</tr>
-<tr>
-<td>-nogroup</td>
-<td>匹配无所有组的文件</td>
-</tr>
-<tr>
-<td>-newer f1 !f2</td>
-<td>匹配比文件f1新但比f2旧的文件</td>
-</tr>
-<tr>
-<td>-type b/d/c/p/l/f</td>
-<td>匹配文件类型（设备、目录、字符设备、管道、连接文件、文本文件）</td>
-</tr>
-<tr>
-<td>-size</td>
-<td>匹配文件的大小（例如-50kb为查找小于50kb的文件，+50kb则相反）</td>
-</tr>
-<tr>
-<td>-prune</td>
-<td>忽略某个目录</td>
-</tr>
-<tr>
-<td>-exec……{};</td>
-<td>后面可跟用于进一步处理搜索结果的命令</td>
-</tr>
-</tbody></table>
-<p>这里需要重点讲解-exec参数重要的作用。这个参数用于把find命令搜索到的结果交由紧随气候的命令做进一步处理，它十分类似于将要讲解的管道符技术，并且由于find命令对参数的特殊要求，因此虽然exec是长格式形式，但依然只需要一个减号（-）。</p>
-<p>根据文件系统层次标准（Filesystem Hierarchy Standard）协议，Linux系统中的配置文件会保存到/etc目录中。如果想要获取到该目录中所有以host开头的文件列表，可执行如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># find /etc -name &quot;host*&quot; -print</span><br></pre></td></tr></table></figure>
-
-<p>如果要在整个系统中搜索权限中包括SUID权限的所有文件，只需要使用-4000即可：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># find / -perm -4000 -print</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>进阶试验：在整个文件系统中找出所有归属于linuxprobe用户的文件并赋值到/root/findresults目录。</p>
-<p>该试验的重点是<code>-exec    {}   \;</code>参数，其中{}表示find命令搜索出的每一个文件，并且命令的结尾必须是“;”.完成该试验的具体命令如下：</p>
-<p>[root@linuxprobe~]# find / -user linuxprobe -exec cp -a {} /root/findresults/;</p>
-</blockquote>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>shell命令显然是靠死记并没有太大用处，学习的正常方式是用。</p>
-<ul>
-<li>利用好man命令，可以随时查询相关命令的说明</li>
-<li>用和练熟悉基本用法，其余的靠工作中查询</li>
-<li>虽然可以查询具体的用法，但有一个功能shell命令查询的工具是有必要的。这个到时可以使用python编辑一个查询器。（后期的项目之一）</li>
-</ul>
-
+          简要概述了Linux命令中常见的几十个
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2019/10/02/Linux-shell-入门/">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -855,10 +326,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          Inhaltsverzeichnis
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          Übersicht
+          Overview
         </li>
       </ul>
 
@@ -879,7 +350,7 @@
           <a href="/archives">
         
           <span class="site-state-item-count">1</span>
-          <span class="site-state-item-name">Artikel</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
     
@@ -892,7 +363,7 @@
           
         
         <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">Kategorien</span>
+        <span class="site-state-item-name">categories</span>
         </a>
       </div>
     
@@ -905,7 +376,7 @@
           
         
         <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">schlagwörter</span>
+        <span class="site-state-item-name">tags</span>
         </a>
       </div>
     
@@ -956,9 +427,9 @@
   </span>
   <span class="author" itemprop="copyrightHolder"></span>
 </div>
-  <div class="powered-by">Erstellt mit  <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Design – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.1</div>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.1</div>
 
         
 
